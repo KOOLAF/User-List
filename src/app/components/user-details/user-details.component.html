@@ -1,0 +1,17 @@
+<div
+  class="card m-auto text-light"
+  style="width: 18rem; background-color: #212529"
+>
+  <img [src]="user?.avatar" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">
+      <span>{{ user?.first_name }}</span> <span>{{ user?.last_name }}</span>
+    </h5>
+    <p class="card-text">
+      {{ user?.email }}
+    </p>
+    <div class="d-flex justify-content-center align-items-center gap-4">
+      <a class="btn btn-primary" (click)="goBack()">back</a>
+    </div>
+  </div>
+</div>

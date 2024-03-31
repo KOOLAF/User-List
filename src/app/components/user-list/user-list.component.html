@@ -1,0 +1,59 @@
+<div *ngIf="isLoading" class="loader">Loading...</div>
+
+<div *ngIf="!isLoading">
+  <div
+    *ngIf="foundUser; else userList"
+    class="container align-items-center mx-auto d-flex m-auto center justify-content-center user-list-slide"
+  >
+    <div class="row card" style="width: 17rem; background-color: #212529">
+      <img
+        class="card-img-top img-fluid"
+        alt="Placeholder Image"
+        [src]="foundUser.avatar"
+        style="height: 242.5px"
+      />
+      <div class="card-body">
+        <h5 class="card-title text-light">
+          <span>{{ foundUser.first_name }}</span>
+          <span>{{ foundUser.last_name }}</span>
+        </h5>
+        <p class="card-text text-light">{{ foundUser.email }}</p>
+        <button class="btn btn-primary" (click)="detail(foundUser.id)">
+          Know More
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #userList>
+    <div
+      class="container align-items-center mx-auto d-flex m-auto center justify-content-center user-list-slide"
+    >
+      <div
+        class="row card"
+        style="width: 17rem; background-color: #212529"
+        *ngFor="let user of users"
+      >
+        <img
+          class="card-img-top img-fluid"
+          alt="Placeholder Image"
+          [src]="user.avatar"
+          style="height: 242.5px"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-light">
+            <span>{{ user.first_name }}</span> <span>{{ user.last_name }}</span>
+          </h5>
+          <p class="card-text text-light">{{ user.email }}</p>
+          <button class="btn btn-primary" (click)="detail(user.id)">
+            Know More
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center gap-4">
+      <button class="btn btn-danger" (click)="prevPage()">Prev</button>
+      <button class="btn btn-success" (click)="nextPage()">Next</button>
+    </div>
+  </ng-template>
+</div>
